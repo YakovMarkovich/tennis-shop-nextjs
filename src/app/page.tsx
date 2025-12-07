@@ -1,26 +1,31 @@
-import Link from "next/link";
-import styles from "./page.module.css";
-import { rackets } from "../data/mock";
+import { RacketCarouselContainer } from "@/components/RacketCarouselContainer/page";
+import { Suspense } from "react";
+import { getProducts } from "@/services/get-products";
+import { getTop10Products } from "@/services/get-top10-products";
 
-const HomePage = () => {
+const HomePage = async () => {
   return (
     <>
-      <main className={styles.carousel}>
-        {rackets.map((racket) => (
-          <div key={racket.id} className={styles.card}>
-            <Link href={`/racket/${racket.id}`}>
-              <img
-                src={racket.imageUrl}
-                alt={racket.name}
-                width={200}
-                height={250}
-                className={styles.image}
-              />
-            </Link>
-            <div className={styles.name}>{racket.name}</div>
-          </div>
-        ))}
-      </main>
+      <Suspense fallback={<div>Загрузка...</div>}>
+        <RacketCarouselContainer
+          title="Ракетки"
+          link="/rackets"
+          linkText={"Все"}
+          limit={10}
+          page={1}
+          fetcher={getProducts}
+        />
+      </Suspense>
+      <Suspense fallback={<div>Загрузка...</div>}>
+        <RacketCarouselContainer
+          title="Top-10"
+          link="/top-10"
+          linkText={"Top-10"}
+          limit={10}
+          page={1}
+          fetcher={getTop10Products}
+        />
+      </Suspense>
     </>
   );
 };
