@@ -27,8 +27,6 @@ export async function generateMetadata({
 const RacketPage = async ({ params }: PageProps<"/racket/[racketId]">) => {
   const { racketId } = await params;
 
-  await getMetaRacketById({ id: racketId });
-
   const { isError, data } = await getProductById({ id: racketId });
 
   if (!isError && !data) {
