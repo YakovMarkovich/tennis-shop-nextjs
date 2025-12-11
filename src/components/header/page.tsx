@@ -1,7 +1,7 @@
 "use client";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./page.module.css";
+import { NavLink } from "../NavLink/page";
 
 const Header = () => {
   const pathname = usePathname();
@@ -12,22 +12,15 @@ const Header = () => {
         <header className={styles.header}>
           <div className={styles.title}>TENNIS STORE</div>
           <ul className={styles.nav}>
-            <Link
-              href="/"
-              className={`${styles.links} ${
-                pathname === "/" ? styles.active : ""
-              }`}
-            >
+            <NavLink href="/" pathname={pathname}>
               Главная
-            </Link>
-            <Link
-              href="/rackets"
-              className={`${styles.links} ${
-                pathname === "/rackets" ? styles.active : ""
-              }`}
-            >
+            </NavLink>
+            <NavLink href="/rackets" pathname={pathname}>
               Ракетки
-            </Link>
+            </NavLink>
+            <NavLink href="/top-10" pathname={pathname}>
+              Top-10
+            </NavLink>
           </ul>
         </header>
         <hr className={styles.divider} />

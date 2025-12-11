@@ -2,6 +2,11 @@ import { RacketCarouselContainer } from "@/components/RacketCarouselContainer/pa
 import { Suspense } from "react";
 import { getProducts } from "@/services/get-products";
 import { getTop10Products } from "@/services/get-top10-products";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  description: "tennis shop home page",
+};
 
 const HomePage = async () => {
   return (
@@ -20,7 +25,7 @@ const HomePage = async () => {
         <RacketCarouselContainer
           title="Top-10"
           link="/top-10"
-          linkText={"Top-10"}
+          linkText={"Все"}
           limit={10}
           page={1}
           fetcher={getTop10Products}
