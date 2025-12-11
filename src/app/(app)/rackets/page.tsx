@@ -8,7 +8,6 @@ export const metadata: Metadata = {
 };
 
 const RacketsPage = async () => {
-  //throw new Error("some bad error");
   return (
     <Suspense fallback={<div>Загрузка...</div>}>
       <RacketItemsContainer limit={20} page={1} />
