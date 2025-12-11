@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import { ReactNode } from "react";
+import cn from "classnames";
 
 interface NavLinkProps {
   href: string;
@@ -11,7 +12,9 @@ interface NavLinkProps {
 export const NavLink = ({ href, pathname, children }: NavLinkProps) => (
   <Link
     href={href}
-    className={`${styles.links} ${pathname === href ? styles.active : ""}`}
+    className={cn(styles.links, {
+      [styles.active]: pathname === href,
+    })}
   >
     {children}
   </Link>
