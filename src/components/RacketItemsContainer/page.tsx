@@ -8,9 +8,13 @@ type Props = {
 };
 
 export async function RacketItemsContainer({ limit, page }: Props) {
-  const response = await getProducts({ limit, page });
+  const [response, responseBrands] = await Promise.all([
+    getProducts({ limit, page }),
+    getBrands(),
+  ]);
+
   const items = response.data ?? [];
-  const responseBrands = await getBrands();
+
   const brands = responseBrands.data?.map((br) => br.name) ?? [];
 
   return <ClientRacketsContainer items={items} brands={brands} />;
