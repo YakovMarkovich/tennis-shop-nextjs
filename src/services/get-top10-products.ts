@@ -1,11 +1,11 @@
 import { IRacket } from "@/app/types/racket";
-import { BASE_API_URL } from "./constants";
+import { BASE_API_URL, TOP10_RACKETS_TAG } from "./constants";
 import { Response } from "./types";
 
 export const getTop10Products = async (): Promise<Response<IRacket[]>> => {
   const result = await fetch(`${BASE_API_URL}/top-10`, {
     next: {
-      tags: ["getTop10Rackets"],
+      tags: [TOP10_RACKETS_TAG],
     },
   });
 
