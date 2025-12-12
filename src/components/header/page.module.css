@@ -27,21 +27,6 @@
   margin-right: 1rem;
 }
 
-.links {
-  font-size: 12px;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.links:hover {
-  color: rgb(62, 49, 175);
-  font-weight: bold;
-}
-
-.active {
-  color: rgb(204, 137, 14);
-}
-
 .divider {
   border: none;
   border-top: 1px solid rgb(200, 200, 200); /* subtle bottom border */

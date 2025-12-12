@@ -1,9 +1,13 @@
 import { IRacket } from "@/app/types/racket";
-import { BASE_API_URL } from "./constants";
+import { BASE_API_URL, TOP10_RACKETS_TAG } from "./constants";
 import { Response } from "./types";
 
 export const getTop10Products = async (): Promise<Response<IRacket[]>> => {
-  const result = await fetch(`${BASE_API_URL}/top-10`);
+  const result = await fetch(`${BASE_API_URL}/top-10`, {
+    next: {
+      tags: [TOP10_RACKETS_TAG],
+    },
+  });
 
   if (result.status === 404) {
     return { isError: false, data: undefined };
