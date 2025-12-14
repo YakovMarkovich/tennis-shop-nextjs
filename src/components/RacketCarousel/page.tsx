@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./page.module.css";
-import { IRacket } from "@/app/types/racket";
+import { IRacket } from "@/types/racket";
 
 interface Props {
   title: string;

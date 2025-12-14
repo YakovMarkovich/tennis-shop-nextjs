@@ -1,4 +1,4 @@
-import { IBrand } from "@/app/types/brand";
+import { IBrand } from "@/types/brand";
 import { BASE_API_URL } from "./constants";
 import { Response } from "./types";
 

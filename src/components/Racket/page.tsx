@@ -1,10 +1,20 @@
-import { IRacket } from "@/app/types/racket";
+"use client";
+
+import { IRacket } from "@/types/racket";
 import styles from "./page.module.css";
+import { use } from "react";
+import { UserContext } from "@/providers/user-provider";
 
 type Props = {
   racket: IRacket;
 };
 export const Racket = ({ racket }: Props) => {
+  const user = use(UserContext);
+
+  function handleClick() {
+    // TODO toggle favorites
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.left}>
@@ -19,6 +29,13 @@ export const Racket = ({ racket }: Props) => {
 
       <div className={styles.right}>
         <div className={styles.price}>${racket.price}</div>
+        {!!user && (
+          <button onClick={handleClick}>
+            {!!racket?.userData?.isFavorite
+              ? "remove from favorites"
+              : "add to favorites"}
+          </button>
+        )}
       </div>
     </div>
   );
