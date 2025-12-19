@@ -1,4 +1,4 @@
-import { IRacket } from "@/app/types/racket";
+import { IRacket } from "@/types/racket";
 import { BASE_API_URL } from "./constants";
 import { Response } from "./types";
 

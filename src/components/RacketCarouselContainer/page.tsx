@@ -1,5 +1,5 @@
 import RacketCarousel from "../RacketCarousel/page";
-import { IRacket } from "@/app/types/racket";
+import { IRacket } from "@/types/racket";
 
 type Fetcher = (params: { limit: number; page: number }) => Promise<{
   isError: boolean;

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import RacketItems from "../RacketItems/page";
 import { RacketsSidebar } from "../RacketsSideBar/page";
-import { IRacket } from "@/app/types/racket";
+import { IRacket } from "@/types/racket";
 
 type ClientRacketsProps = {
   items: IRacket[];

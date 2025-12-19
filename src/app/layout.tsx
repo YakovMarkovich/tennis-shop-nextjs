@@ -1,22 +1,19 @@
-import styles from "./layout.module.css";
-import Header from "@/components/header/page";
-import Footer from "@/components/footer/page";
-import { Metadata } from "next";
+import { FC } from "react";
 import NextTopLoader from "nextjs-toploader";
+import { Metadata } from "next";
+import "./global.css";
 
 export const metadata: Metadata = {
-  title: "Tennis shop",
-  description: "tennis items",
+  title: "Tennis Store",
+  description: "Tennis Store Descriptin",
 };
 
-const RootLayout = ({ children }: LayoutProps<"/">) => {
+const RootLayout: FC<LayoutProps<"/">> = ({ children }) => {
   return (
-    <html>
-      <NextTopLoader />
-      <body className={styles.body}>
-        <Header />
+    <html lang="en">
+      <body>
+        <NextTopLoader showSpinner={false} />
         {children}
-        <Footer />
       </body>
     </html>
   );

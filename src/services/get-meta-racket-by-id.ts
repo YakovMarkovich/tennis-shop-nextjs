@@ -1,5 +1,5 @@
 import { BASE_API_URL } from "./constants";
-import { IRacket } from "@/app/types/racket";
+import { IRacket } from "@/types/racket";
 import { Response } from "./types";
 
 type Params = {
