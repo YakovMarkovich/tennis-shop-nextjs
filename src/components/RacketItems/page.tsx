@@ -1,6 +1,6 @@
-import Link from "next/link";
 import styles from "./page.module.css";
 import { IRacket } from "@/types/racket";
+import RacketItem from "../RacketItem/page";
 
 interface Props {
   title: string;
@@ -13,18 +13,7 @@ const RacketItems = ({ title, items }: Props) => {
       <h2 className={styles.title}>{title}</h2>
       <div className={styles.cards}>
         {items.map((racket) => (
-          <div key={racket.id} className={styles.card}>
-            <Link href={`/racket/${racket.id}`}>
-              <img
-                src={racket.imageUrl}
-                alt={racket.name}
-                width={200}
-                height={250}
-                className={styles.image}
-              />
-            </Link>
-            <div className={styles.name}>{racket.name}</div>
-          </div>
+          <RacketItem key={racket.id} racket={racket} />
         ))}
       </div>
     </section>

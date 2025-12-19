@@ -3,7 +3,7 @@ import { usePathname, useRouter } from "next/navigation";
 import styles from "./page.module.css";
 import { NavLink } from "../NavLink/page";
 import { use } from "react";
-import { UserContext } from "@/providers/user-provider";
+import { UserContext } from "@/providers/user-provider/user-provider";
 
 const Header = () => {
   const pathname = usePathname();
