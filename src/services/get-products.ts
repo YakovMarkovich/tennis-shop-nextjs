@@ -1,6 +1,7 @@
 import { IRacket } from "@/types/racket";
 import { BASE_API_URL } from "./constants";
 import { Response } from "./types";
+import { cookies } from "next/headers";
 
 type Params = {
   limit: number;
@@ -11,8 +12,15 @@ export const getProducts = async ({
   limit = 10,
   page = 1,
 }: Params): Promise<Response<IRacket[]>> => {
+  const cookieStore = await cookies();
+
   const result = await fetch(
-    `${BASE_API_URL}/products?page=${page}&limit=${limit}`
+    `${BASE_API_URL}/products?page=${page}&limit=${limit}`,
+    {
+      headers: {
+        Cookie: cookieStore.toString(),
+      },
+    }
   );
 
   if (result.status === 404) {

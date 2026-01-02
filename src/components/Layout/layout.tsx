@@ -1,9 +1,10 @@
 import Header from "@/components/header/page";
 import Footer from "@/components/footer/page";
 import { Metadata } from "next";
-import { UserProvider } from "@/providers/user-provider";
+import { UserProvider } from "@/providers/user-provider/user-provider";
 import { getUser } from "@/services/get-user";
 import { FC, PropsWithChildren } from "react";
+import { FavoriteProvider } from "@/providers/favorite-provider/favorite-provider";
 
 export const metadata: Metadata = {
   title: "Tennis shop",
@@ -15,9 +16,11 @@ export const Layout: FC<PropsWithChildren> = async ({ children }) => {
 
   return (
     <UserProvider user={data ?? null}>
-      <Header />
-      {children}
-      <Footer />
+      <FavoriteProvider>
+        <Header />
+        {children}
+        <Footer />
+      </FavoriteProvider>
     </UserProvider>
   );
 };
