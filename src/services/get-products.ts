@@ -6,22 +6,30 @@ import { cookies } from "next/headers";
 type Params = {
   limit: number;
   page: number;
+  brand: string | undefined | string[];
 };
 
 export const getProducts = async ({
   limit = 10,
   page = 1,
+  brand,
 }: Params): Promise<Response<IRacket[]>> => {
   const cookieStore = await cookies();
 
-  const result = await fetch(
-    `${BASE_API_URL}/products?page=${page}&limit=${limit}`,
-    {
-      headers: {
-        Cookie: cookieStore.toString(),
-      },
-    }
-  );
+  const query = new URLSearchParams({
+    page: String(page),
+    limit: String(limit),
+  });
+
+  if (brand) {
+    query.set("brand", String(brand));
+  }
+
+  const result = await fetch(`${BASE_API_URL}/products?${query.toString()}`, {
+    headers: {
+      Cookie: cookieStore.toString(),
+    },
+  });
 
   if (result.status === 404) {
     return { isError: false, data: undefined };

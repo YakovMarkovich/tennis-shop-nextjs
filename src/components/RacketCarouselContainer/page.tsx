@@ -1,7 +1,11 @@
 import RacketCarousel from "../RacketCarousel/page";
 import { IRacket } from "@/types/racket";
 
-type Fetcher = (params: { limit: number; page: number }) => Promise<{
+type Fetcher = (params: {
+  limit: number;
+  page: number;
+  brand: string | string[] | undefined;
+}) => Promise<{
   isError: boolean;
   data?: IRacket[];
 }>;
@@ -23,7 +27,7 @@ export async function RacketCarouselContainer({
   page,
   fetcher,
 }: Props) {
-  const response = await fetcher({ limit, page });
+  const response = await fetcher({ limit, page, brand: undefined });
   const items = response.data ?? [];
 
   return (
